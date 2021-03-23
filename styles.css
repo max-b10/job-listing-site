@@ -1,0 +1,101 @@
+* {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+     font-size: 11px;
+     font-family: 'Spartan', sans-serif;
+    }
+/*
+
+- Desaturated Dark Cyan: hsl(180, 29%, 50%)
+- Light Grayish Cyan (Background): hsl(180, 52%, 96%)
+- Light Grayish Cyan (Filter Tablets): hsl(180, 31%, 95%)
+- Dark Grayish Cyan: hsl(180, 8%, 52%)
+- Very Dark Grayish Cyan: hsl(180, 14%, 20%) */
+
+
+.container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: hsl(180, 52%, 96%)
+    }
+/* Turquoise header background */
+.header{
+        background-image: url('/images/bg-header-mobile.svg');
+        background-size: cover;
+        height: 156px;
+        background-color: hsl(180, 29%, 50%) ;
+        display: flex;
+    }
+
+.company-logo{
+    height: 100%;
+    width: 15%;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 10px 0;
+}
+ .company-name, .job-info, .tags, .languages{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+.items-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* max-width: 350px; */
+    width:100%;
+    margin: 20px 30px;
+
+}
+
+/* Border for all featured jobs */
+.featured{
+    border-left: solid 3px hsl(180, 29%, 50%);
+}
+
+.job-name{
+    font-weight: 700;
+}
+.job-info{
+    color:hsl(180, 8%, 52%);
+}
+.tags{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:0 0;
+    font-weight: 700;
+}
+.tag{
+    margin: 0 0;
+    color:hsl(180, 29%, 50%);
+    background-color: hsl(180, 52%, 96%);
+}
+#company{
+    color:hsl(180, 29%, 50%);
+    font-weight: 700;
+}
+#new{
+    background-color: hsl(180, 29%, 50%);
+    color: white;
+    padding: 5px 7px;
+    border-top-left-radius: 10px ;
+    border-top-right-radius: 10px ;
+    border-bottom-left-radius: 10px ;
+    border-bottom-right-radius: 10px ;
+}
+#featured{
+    background-color: hsl(180, 14%, 20%);
+    color: white;
+    padding: 5px 7px;
+    border-top-left-radius: 10px ;
+    border-top-right-radius: 10px ;
+    border-bottom-left-radius: 10px ;
+    border-bottom-right-radius: 10px ;
+}
