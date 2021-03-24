@@ -14,88 +14,168 @@
 - Very Dark Grayish Cyan: hsl(180, 14%, 20%) */
 
 
-.container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background-color: hsl(180, 52%, 96%)
-    }
+
 /* Turquoise header background */
 .header{
+    width: 100%;
         background-image: url('/images/bg-header-mobile.svg');
         background-size: cover;
         height: 156px;
         background-color: hsl(180, 29%, 50%) ;
-        display: flex;
     }
 
-.company-logo{
-    height: 100%;
-    width: 15%;
+.items-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    padding-top: 15px;
+    background-color: hsl(180, 52%, 96%);
 }
+
 .item{
     display: flex;
     flex-direction: column;
     background-color: white;
     margin: 10px 0;
+    padding: 10px 10px;
+    width: 83%;
+    border-radius: 4px;
+    box-shadow: 0px 5px 10px 2px rgba(91, 164, 164, 0.2);
 }
- .company-name, .job-info, .tags, .languages{
+
+.company-logo{
+    height: 100%;
+    width: 15%;
+}
+
+ .company-name {
     display: flex;
     flex-direction: row;
-    background-color: white;
-}
-.items-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* max-width: 350px; */
-    width:100%;
-    margin: 20px 30px;
-
+    justify-content: flex-start;
+    width: 75%;
+    margin: 5px 0px;
+    font-weight: 700;
 }
 
-/* Border for all featured jobs */
+/* Individual item styles start */
+
+.description{
+    margin: 0 20px 0 0;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid hsla(180, 8%, 52%, 0.701);
+    background-color:#FFF;;
+}
+
+
 .featured{
     border-left: solid 3px hsl(180, 29%, 50%);
 }
 
 .job-name{
     font-weight: 700;
+    width: 75%;
+    margin: 10px 0;
+    font-size:12px;
 }
+
 .job-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     color:hsl(180, 8%, 52%);
+    width:80%;
+    margin: 10px 0px;
+} 
+
+.job-posted{
+margin-left:0px;
 }
+
+.dot{
+    height: 3px;
+    width: 3px;
+    background-color:hsl(180, 8%, 52%) ;
+    align-items: center;
+    transform: translateY(4px);
+    border-radius: 500px;
+    margin: 0 5px;
+}
+
 .tags{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin:0 0;
+    align-items: center;
     font-weight: 700;
+    margin: 10px 20px 0 0;
 }
+
 .tag{
     margin: 0 0;
     color:hsl(180, 29%, 50%);
     background-color: hsl(180, 52%, 96%);
+    padding: 8px 8px 6px 8px;
+    margin: 5px 0 5px 15px;
+    border-radius: 3px;
+    border:none;
+    font-weight: 700;
+    cursor: pointer;
 }
+.tag:active{
+    color:hsl(180, 28%, 46%);
+    background-color:hsl(180, 16%, 85%) ;
+    outline:none;
+}
+.tag:focus{
+    outline:none;
+
+}
+
+.languages{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.language{
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
 #company{
     color:hsl(180, 29%, 50%);
     font-weight: 700;
+    padding: 6px 5px 0px 0px;
+    border-top-left-radius: 10px ;
+    border-top-right-radius: 10px ;
+    border-bottom-left-radius: 10px ;
+    border-bottom-right-radius: 10px ;
+    margin-left: 2px;
 }
+
 #new{
     background-color: hsl(180, 29%, 50%);
     color: white;
-    padding: 5px 7px;
+    padding: 7px 5px 3px 5px;
     border-top-left-radius: 10px ;
     border-top-right-radius: 10px ;
     border-bottom-left-radius: 10px ;
     border-bottom-right-radius: 10px ;
+    font-size: 10px;
+    margin: 0px 5px 0px 5px;
 }
+
 #featured{
     background-color: hsl(180, 14%, 20%);
     color: white;
-    padding: 5px 7px;
+    padding: 7px 5px 3px 5px;
+    padding: 7px 5px 0px 5px;
     border-top-left-radius: 10px ;
     border-top-right-radius: 10px ;
     border-bottom-left-radius: 10px ;
     border-bottom-right-radius: 10px ;
+    font-size: 10px;
+    margin: 0px 5px 0px 5px;
 }
