@@ -1,20 +1,4 @@
-// The indiviudal tag buttons variable assignments:
-// const allTagsFrontend = document.querySelectorAll("[data-info='Frontend']");
-// const allTagsBackend = document.querySelectorAll("[data-info='Backend']");
-// const allTagsFullstack = document.querySelectorAll("[data-info='Fullstack']");
-// const allTagsJunior = document.querySelectorAll("[data-info='Junior']");
-// const allTagsMidweight = document.querySelectorAll("[data-info='Midweight']");
-// const allTagsSenior = document.querySelectorAll("[data-info='Senior']");
-// const allTagsHTML = document.querySelectorAll("[data-info='HTML']");
-// const allTagsCSS = document.querySelectorAll("[data-info='CSS']");
-// const allTagsJavaScript = document.querySelectorAll("[data-info='JavaScript']");
-// const allTagsPython = document.querySelectorAll("[data-info='Python']");
-// const allTagsRuby = document.querySelectorAll("[data-info='Ruby']");
-// const allTagsReact = document.querySelectorAll("[data-info='React']");
-// const allTagsSASS = document.querySelectorAll("[data-info='SASS']");
-// const allTagsVue = document.querySelectorAll("[data-info='Vue']");
-// const allTagsDjango = document.querySelectorAll("[data-info='Django']");
-// const allTagsRoR = document.querySelectorAll("[data-info='RoR']");
+
 
 const allTags = document.querySelectorAll(".tag");
 const searchBar = document.querySelector(".header-search-bar");
