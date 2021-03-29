@@ -60,27 +60,17 @@ allTags.forEach((tag) => {
 
     let eachItem = document.querySelectorAll(".item");
     eachItem = [...eachItem];
-    // console.log(eachItem);
-
-    const tagDataInfo = tag.getAttribute("data-info");
-    // console.log(tagDataInfo);
+    console.log(eachItem);
 
     eachItem.forEach((item) => {
-      const tagsDiv = item.lastElementChild;
-      const tagsDivChildren = tagsDiv.children;
-
-      for (let i = 0; i < tagsDivChildren.length; i++) {
-        const individualTags = tagsDivChildren[i].innerHTML;
-        // console.log(individualTags);
-        if (tagDataInfo === tagButton.innerHTML) {
-          item.style.display = "block";
-          console.log(tagDataInfo);
-          // console.log(typeof tagDataInfo);
-        } else {
-          item.style.display = "none";
-        }
+      const tagDataInfo = tag.getAttribute("data-info");
+      console.log(tagDataInfo.split());
+      if (tagDataInfo === tagButton.innerHTML.trim()) {
+        item.style.display = "block";
+        // console.log(item.style.block);
+      } else {
+        item.style.display = "none";
       }
-
       // const tagButton = tags.lastElementChild;
       // console.log(tagButton);
       // const tagInfo = tagButton.innerHTML;
@@ -104,3 +94,17 @@ allTags.forEach((tag) => {
     renderFilterContainer();
   });
 });
+
+// const tagsDiv = item.lastElementChild;
+// const tagsDivChildren = tagsDiv.children;
+// for (let i = 0; i < tagsDivChildren.length; i++) {
+//   const individualTags = tagsDivChildren[i].innerHTML;
+//   const tagsArray = Array.from(individualTags);
+//   console.log(tagsArray);
+//   if (individualTags.trim() === tagButton.innerHTML.trim()) {
+//     item.style.display = "block";
+//     console.log(individualTags);
+//   } else {
+//     item.style.display = "none";
+//   }
+// }
