@@ -1,110 +1,89 @@
-// The indiviudal tag buttons variable assignments:
-// const allTagsFrontend = document.querySelectorAll("[data-info='Frontend']");
-// const allTagsBackend = document.querySelectorAll("[data-info='Backend']");
-// const allTagsFullstack = document.querySelectorAll("[data-info='Fullstack']");
-// const allTagsJunior = document.querySelectorAll("[data-info='Junior']");
-// const allTagsMidweight = document.querySelectorAll("[data-info='Midweight']");
-// const allTagsSenior = document.querySelectorAll("[data-info='Senior']");
-// const allTagsHTML = document.querySelectorAll("[data-info='HTML']");
-// const allTagsCSS = document.querySelectorAll("[data-info='CSS']");
-// const allTagsJavaScript = document.querySelectorAll("[data-info='JavaScript']");
-// const allTagsPython = document.querySelectorAll("[data-info='Python']");
-// const allTagsRuby = document.querySelectorAll("[data-info='Ruby']");
-// const allTagsReact = document.querySelectorAll("[data-info='React']");
-// const allTagsSASS = document.querySelectorAll("[data-info='SASS']");
-// const allTagsVue = document.querySelectorAll("[data-info='Vue']");
-// const allTagsDjango = document.querySelectorAll("[data-info='Django']");
-// const allTagsRoR = document.querySelectorAll("[data-info='RoR']");
+const gameContainer = document.querySelector(".game-container");
+const bird = document.querySelector(".bird");
+const ground = document.querySelector(".ground");
 
-const allTags = document.querySelectorAll(".tag");
-const searchBar = document.querySelector(".header-search-bar");
-const filterContainer = document.querySelector(".filters-container");
-const clearButton = document.querySelector(".clear-button");
-const deleteButton = document.querySelectorAll(".deleteButton");
-const itemsContainer = document.querySelector(".items-container");
-let filters = [];
-renderFilterContainer();
+let birdLeft = 110;
+let birdBottom = 165;
+let gravity = 1.5;
+let isGameOver = false;
+let gap = 330;
 
-// Add the clicked tag to the filter container
-allTags.forEach((tag) => {
-  tag.addEventListener("click", (e) => {
-    //  When each tag is clicked, the tagValue is added to the filters array:
-    let tagValue = e.target.dataset.info;
-
-    // Each element in the filters array consists of a button:
-    // The css will stick the 'cross' favicon '::after' the button text.
-    const tagButton = document.createElement("button");
-    tagButton.innerHTML = tagValue;
-    tagButton.classList.add("deleteButton");
-
-    // If tag isn't selected already, add it to filters array and container:
-    if (!filters.includes(tagValue)) {
-      filters.push(tagValue);
-      filterContainer.append(tagButton);
-    } else {
-      alert("Filter already selected");
-    }
-
-    // Remove filter from filter container and filters array when it's clicked:
-    tagButton.addEventListener("click", (e) => {
-      // Remove from filter container:
-      const tagValue = e.target;
-      filterContainer.removeChild(tagValue);
-
-      // Remove from filters array:
-      const tagIndex = filters.indexOf(tagValue);
-      filters.splice(tagIndex, 1);
-
-      renderFilterContainer();
-    });
-
-    let eachItem = document.querySelectorAll(".item");
-    eachItem = [...eachItem];
-    console.log(eachItem);
-
-    eachItem.forEach((item) => {
-      const tagDataInfo = tag.getAttribute("data-info");
-      console.log(tagDataInfo.split());
-      if (tagDataInfo === tagButton.innerHTML.trim()) {
-        item.style.display = "block";
-        // console.log(item.style.block);
-      } else {
-        item.style.display = "none";
-      }
-      // const tagButton = tags.lastElementChild;
-      // console.log(tagButton);
-      // const tagInfo = tagButton.innerHTML;
-      // console.log(tagInfo);
-      // let everyTag = document.querySelectorAll(".tag");
-      // everyTag = [...everyTag];
-      // console.log(everyTag);
-
-      // console.log(filters);
-      renderFilterContainer();
-    });
-    // console.log(tagButton);
-
-    renderFilterContainer();
-  });
-
-  // Clicking clear, clears the filters container:
-  clearButton.addEventListener("click", () => {
-    filterContainer.innerHTML = "";
-    filters = [];
-    renderFilterContainer();
-  });
+gameContainer.addEventListener("click", () => {
+  flyUp();
+  //   console.log(birdBottom);
 });
 
-// const tagsDiv = item.lastElementChild;
-// const tagsDivChildren = tagsDiv.children;
-// for (let i = 0; i < tagsDivChildren.length; i++) {
-//   const individualTags = tagsDivChildren[i].innerHTML;
-//   const tagsArray = Array.from(individualTags);
-//   console.log(tagsArray);
-//   if (individualTags.trim() === tagButton.innerHTML.trim()) {
-//     item.style.display = "block";
-//     console.log(individualTags);
-//   } else {
-//     item.style.display = "none";
-//   }
-// }
+const startGame = () => {
+  birdBottom -= gravity;
+  bird.style.left = birdLeft + "px";
+  bird.style.bottom = birdBottom + "px";
+};
+let startTimerId = setInterval(startGame, 20);
+
+const flyUp = () => {
+  if (birdBottom < 350) birdBottom += 30;
+  bird.style.bottom = birdBottom + "px";
+};
+
+const generateObstacle = () => {
+  // Create random heights for each obstacle:
+  let obstacleLeft = 350;
+  let randomHeight = Math.random() * 90;
+  let obstacleBottom = randomHeight;
+
+  // Create and append each obstacle (if game isn't over):
+  const bottomObstacle = document.createElement("div");
+  const topObstacle = document.createElement("div");
+
+  if (!isGameOver) {
+    bottomObstacle.classList.add("bottom-obstacle");
+    topObstacle.classList.add("top-obstacle");
+  }
+
+  gameContainer.appendChild(bottomObstacle);
+  gameContainer.appendChild(topObstacle);
+
+  // Where each obstacle starts:
+  bottomObstacle.style.left = obstacleLeft + "px";
+  topObstacle.style.left = obstacleLeft + "px";
+  bottomObstacle.style.bottom = obstacleBottom + "px";
+  topObstacle.style.bottom = obstacleBottom + gap + "px";
+
+  const moveObstacle = () => {
+    //   move the obstacle left 2px (every 20ms using setInterval).
+    obstacleLeft -= 4;
+    bottomObstacle.style.left = obstacleLeft + "px";
+    topObstacle.style.left = obstacleLeft + "px";
+
+    if (obstacleLeft === -50) {
+      // stop the interval from executing:
+      clearInterval(obstacleTimerId);
+      //   and remove each obstacle:
+      gameContainer.removeChild(bottomObstacle);
+      gameContainer.removeChild(topObstacle);
+    }
+    //   logic determining if the bird and either obstacle are in the same vertical alignment.
+    if (
+      (obstacleLeft > 100 &&
+        obstacleLeft < 160 &&
+        birdLeft === 110 &&
+        (birdBottom < obstacleBottom + 81 ||
+          birdBottom > obstacleBottom + gap - 120)) ||
+      birdBottom <= 0
+    ) {
+      gameOver();
+      clearInterval(obstacleTimerId);
+    }
+    // console.log(obstacleLeft);
+  };
+  let obstacleTimerId = setInterval(moveObstacle, 20);
+  // setTimeout executes a function once the time given expires:
+  if (!isGameOver) setTimeout(generateObstacle, 1200);
+};
+generateObstacle();
+
+const gameOver = () => {
+  clearInterval(startTimerId);
+  console.log("gameOver");
+  isGameOver = true;
+};
